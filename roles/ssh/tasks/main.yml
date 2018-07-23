@@ -1,0 +1,15 @@
+- name: "Do not permit root SSH login."
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: PermitRootLogin no
+- name: "Do not allow password authentication (i.e., keypair only)."
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: PasswordAuthentication no
+- name: "Restrict SSH user list."
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: AllowUsers pi

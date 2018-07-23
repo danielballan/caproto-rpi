@@ -1,0 +1,4 @@
+[pis]
+
+[pis:vars]
+ansible_user=pi

@@ -1,0 +1,41 @@
+- name: Install ufw.
+  become: true
+  apt: name=ufw update_cache=true cache_valid_time=600
+- name: Allow but rate-limit SSH connections.
+  become: true
+  ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+- name: Allow UDP connections on standard EPICS ports.
+  become: true
+  ufw:
+    rule: allow
+    port: 5064:5065
+    proto: udp
+- name: Allow TCP connections on standard EPICS ports.
+  become: true
+  ufw:
+    rule: allow
+    port: 5064:5065
+    proto: tcp
+- name: Allow UDP connections on ephemeral port range.
+  # Emphemeral port range for Linux obtained from
+  # https://www.cymru.com/jtk/misc/ephemeralports.html
+  become: true
+  ufw:
+    rule: allow
+    port: 32768:65535
+    proto: udp
+- name: Allow TCP connections on ephemeral port range.
+  # Emphemeral port range for Linux obtained from
+  # https://www.cymru.com/jtk/misc/ephemeralports.html
+  become: true
+  ufw:
+    rule: allow
+    port: 32768:65535
+    proto: tcp
+- name: Enable ufw (uncomplicated firewall).
+  become: true
+  ufw:
+    state: enabled

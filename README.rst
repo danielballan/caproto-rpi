@@ -1,0 +1,36 @@
+Headless RPi Setup
+------------------
+
+This documentation builds on 
+`official docs <https://www.raspberrypi.org/documentation/configuration/wireless/headless.md>`_.
+
+* Download Raspbian Stretch Lite image (no desktop). See
+  `Rpi downloads page <https://www.raspberrypi.org/downloads/raspbian/>`_.  
+* Use Etcher to "flash" the SD card with this image.
+* Mount the boot partition of the SD card.
+* To enable ssh, create an empty file named ``ssh`` in the root of the boot
+  partition.
+* Add a file name ``wpa_supplicant.conf`` to that same directory with contents
+  like:
+
+  .. code-block:: json
+
+     country=GB
+     ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+     update_config=1
+     network={
+         ssid="YOUR_WIFI_NETWORK_NAME"
+         psk="PASSWORD_IN_PLAIN_TEXT"
+     }
+
+  For more details, see
+  `official docs <https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md`_.
+* Check router settings to find RPi.
+* ``ssh-copy-id``
+
+Use Ansible which will:
+
+* Harden SSH.
+* Configure a firewall using uncomplicated firewall (ufw) that is just
+  permissive enough to support SSH and EPICS-related traffic.
+* Install Python 3.6 from source and install pip using get-pip.py.

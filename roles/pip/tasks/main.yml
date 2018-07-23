@@ -1,0 +1,9 @@
+- name: "Download get-pip.py"
+  get_url:
+    url="https://bootstrap.pypa.io/get-pip.py"
+    dest="/tmp/get-pip.py"
+- name: "Run get-pip.py"
+  become: true
+  command: python3.6 get-pip.py
+  args:
+    chdir: /tmp

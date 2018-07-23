@@ -1,0 +1,8 @@
+- hosts: pis
+  roles:
+    - ssh
+    - ufw
+    - name: python
+      version: 3.6.5
+      threads: 4
+    - pip
