@@ -25,12 +25,22 @@ This documentation builds on
 
   For more details, see
   `official docs <https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md`_.
-* Check router settings to find RPi.
-* ``ssh-copy-id``
+* Check router settings to find RPi's IP address.
+* Copy ssh key(s) using ``ssh-copy-id``. The factory default login is
+  ``pi``/``raspberry``.
+* Set a unique hostname in ``/etc/hostname`` and last line of ``/etc/hosts``.
 
-Use Ansible which will:
+Create an inventory file named ``hosts`` by copying ``hosts.example`` and
+adding the hostname(s) of the RPi(s) you want to configure.
+
+Apply Ansible playbook which will:
 
 * Harden SSH.
-* Configure a firewall using uncomplicated firewall (ufw) that is just
+* Configure a firewall using uncomplicated firewall (``ufw``) that is just
   permissive enough to support SSH and EPICS-related traffic.
-* Install Python 3.6 from source and install pip using get-pip.py.
+* Install Python 3.6 from source and install pip using get-pip.py. Building
+  Python takes about 60 minutes on a RaspberryPi Zero.
+
+```
+ansible-playbook initial_setup.yml
+```
