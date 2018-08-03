@@ -44,3 +44,11 @@ Apply Ansible playbook which will:
 ```
 ansible-playbook initial_setup.yml
 ```
+
+Install caproto into a virtual environment:
+
+```
+python3.6 -m venv try-caproto
+source try-caproto/bin/activate
+pip install caproto
+```
