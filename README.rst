@@ -13,7 +13,7 @@ This documentation builds on
 * Add a file name ``wpa_supplicant.conf`` to that same directory with contents
   like:
 
-  .. code-block:: json
+  .. code-block:: ini
 
      country=GB
      ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -41,14 +41,14 @@ Apply Ansible playbook which will:
 * Install Python 3.6 from source and install pip using get-pip.py. Building
   Python takes about 60 minutes on a RaspberryPi Zero.
 
-```
-ansible-playbook initial_setup.yml
-```
+.. code-block:: bash
+
+   ansible-playbook initial_setup.yml
 
 Install caproto into a virtual environment:
 
-```
-python3.6 -m venv try-caproto
-source try-caproto/bin/activate
-pip install caproto
-```
+.. code-block:: bash
+
+   python3.6 -m venv try-caproto
+   source try-caproto/bin/activate
+   pip install caproto
