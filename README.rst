@@ -45,6 +45,12 @@ Apply Ansible playbook which will:
 
    ansible-playbook initial_setup.yml
 
+Now SSH into the pi:
+
+.. code-block:: bash
+
+   ssh pi@YOUR_CHOSEN_HOSTNAME
+
 Install caproto into a virtual environment:
 
 .. code-block:: bash
