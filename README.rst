@@ -42,7 +42,9 @@ This documentation builds on
   such as ``pizero5``.
 * Reboot: ``sudo reboot now``.
 * After ~20 seconds, verify that you can login: ``ssh pi@NEW_HOSTNAME``. This
-  time, we allow the host key to be added.
+  time, we allow the host key to be added. The RPi should display a security
+  warning because the default password has not been changed. We will address
+  this with Ansible in the next step.
 
 Create an inventory file named ``hosts`` by copying ``hosts.example`` and
 adding the hostname(s) of the RPi(s) you want to configure.
