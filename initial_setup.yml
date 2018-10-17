@@ -7,9 +7,28 @@
       threads: 4
     - pip
   tasks:
+    - name: Install git.
+      apt:
+        name: git
+        state: present
+      become: yes
+
+    - name: Install supervisor.
+      apt:
+        name: supervisor
+        state: present
+      become: yes
+
     # https://hackaday.com/2017/11/02/what-is-entropy-and-how-do-i-get-more-of-it/
     - name: Get the chip's hardware RNG contributing to system entropy.
       apt:
         name: rng-tools
-        state: installed
+        state: present
       become: yes
+
+    - name: Create a venv with caproto master installed.
+      pip:
+        name: git+https://github.com/NSLS-II/caproto
+        virtualenv: /opt/caproto-venv
+        virtualenv_command: /usr/local/bin/python3.6 -m venv
+      become: true

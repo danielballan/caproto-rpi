@@ -54,23 +54,13 @@ Apply Ansible playbook which will:
 * Harden SSH.
 * Configure a firewall using uncomplicated firewall (``ufw``) that is just
   permissive enough to support SSH and EPICS-related traffic.
+* Get the chip's hardware RNG contributing to system entropy, which is
+  necessary for generating enough entropy to importing certain Python packages.
+* Install git and supervisor.
 * Install Python 3.6 from source and install pip using get-pip.py. Building
   Python takes about 60 minutes on a RaspberryPi Zero.
+* Install a new venv with caproto.
 
 .. code-block:: bash
 
    ansible-playbook initial_setup.yml
-
-Now SSH into the pi:
-
-.. code-block:: bash
-
-   ssh pi@YOUR_CHOSEN_HOSTNAME
-
-Install caproto into a virtual environment:
-
-.. code-block:: bash
-
-   python3.6 -m venv try-caproto
-   source try-caproto/bin/activate
-   pip install caproto
