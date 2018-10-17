@@ -6,7 +6,7 @@ This documentation builds on
 
 * Download Raspbian Stretch Lite image (no desktop). See
   `Rpi downloads page <https://www.raspberrypi.org/downloads/raspbian/>`_.  
-* Use [Etcher](https://etcher.io/) to "flash" the SD card with this image.
+* Use `Etcher <https://etcher.io/>`_ to "flash" the SD card with this image.
 * Mount the boot partition of the SD card.
 * To enable ssh, create an empty file named ``ssh`` in the root of the boot
   partition.
@@ -24,10 +24,19 @@ This documentation builds on
      }
 
   For more details, see
-  `official docs <https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md`_.
-* Check router settings to find RPi's IP address.
-* Copy ssh key(s) using ``ssh-copy-id``. The factory default login is
-  ``pi``/``raspberry``.
+  `official docs <https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md>`_.
+* Unmount and eject the SD card. Load it into the RPi and plug in the RPi. The
+  RPi should automatically boot and join the WiFi network with the hostname
+  ``raspberrypi``.
+* Copy ssh key(s). Avoid adding the host key to ``known_hosts`` because we are
+  about to change the hostname.
+
+  .. code-block:: bash
+
+     ssh-copy-id -o "UserKnownHostsFile /dev/null" pi@raspberrypi
+     ssh -o "UserKnownHostsFile /dev/null" pi@raspberrypi
+
+* Install a proper editor (e.g. ``sudo apt install vim``).
 * Set a unique hostname in ``/etc/hostname`` and last line of ``/etc/hosts``.
 
 Create an inventory file named ``hosts`` by copying ``hosts.example`` and
