@@ -30,7 +30,7 @@ This documentation builds on
   ``raspberrypi``.
 * Copy ssh key(s). We use an option to avoid adding the host key to
   ``~/.ssh/known_hosts`` because we are about to change the hostname. Enter
-  ``y`` and the default password, ``raspberry``, when prompted.
+  ``yes`` and the default password, ``raspberry``, when prompted.
 
   .. code-block:: bash
 
