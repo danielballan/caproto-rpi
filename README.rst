@@ -28,8 +28,9 @@ This documentation builds on
 * Unmount and eject the SD card. Load it into the RPi and plug in the RPi. The
   RPi should automatically boot and join the WiFi network with the hostname
   ``raspberrypi``.
-* Copy ssh key(s). Avoid adding the host key to ``known_hosts`` because we are
-  about to change the hostname.
+* Copy ssh key(s). We use an avoid to avoidadding the host key to
+  ``known_hosts`` because we are about to change the hostname. Enter ``y`` and
+  the default password, ``raspberry``, when prompted.
 
   .. code-block:: bash
 
