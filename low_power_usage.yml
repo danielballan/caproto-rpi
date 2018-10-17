@@ -1,12 +1,12 @@
 # This is mostly based on a blog post:
 # https://www.jeffgeerling.com/blogs/jeff-geerling/raspberry-pi-zero-conserve-energy
 
-- hosts:
-    - battery-powered
-- tasks:
+- hosts: battery-powered
+  tasks:
     - name: Disable HDMI.
       lineinfile:
         path: /etc/rc.local
+        line: /usr/bin/tvservice -o  # Use -p to re-enable.
         state: present
       become: yes
 
@@ -36,8 +36,4 @@
       - cups*
       - gnome*
       - x11-common*
-      become: yes
-
-    - name: Reboot
-      reboot:
       become: yes
