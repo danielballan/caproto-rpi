@@ -64,3 +64,13 @@ Apply Ansible playbook which will:
 .. code-block:: bash
 
    ansible-playbook initial_setup.yml
+
+If the RPi will run on battery power, add it to the ``battery-powered`` group
+in ``hosts`` and then apply the ``low_power_usage.yml`` playbook, which should
+shave off 10s of mA of power usage.
+
+.. code-block:: bash
+
+   ansible-playbook low_power_usage.yml
+
+After apply one or both of these playbooks, reboot.
