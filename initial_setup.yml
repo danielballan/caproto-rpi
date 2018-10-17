@@ -6,3 +6,10 @@
       version: 3.6.5
       threads: 4
     - pip
+  tasks:
+    # https://hackaday.com/2017/11/02/what-is-entropy-and-how-do-i-get-more-of-it/
+    - name: Get the chip's hardware RNG contributing to system entropy.
+      apt:
+        name: rng-tools
+        state: installed
+      become: yes
