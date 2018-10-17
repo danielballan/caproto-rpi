@@ -1,4 +1,4 @@
-- hosts: new
+- hosts: pis
   roles:
     - ssh
     - ufw
