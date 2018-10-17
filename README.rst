@@ -28,9 +28,9 @@ This documentation builds on
 * Unmount and eject the SD card. Load it into the RPi and plug in the RPi. The
   RPi should automatically boot and join the WiFi network with the hostname
   ``raspberrypi``.
-* Copy ssh key(s). We use an avoid to avoidadding the host key to
-  ``known_hosts`` because we are about to change the hostname. Enter ``y`` and
-  the default password, ``raspberry``, when prompted.
+* Copy ssh key(s). We use an option to avoid adding the host key to
+  ``~/.ssh/known_hosts`` because we are about to change the hostname. Enter
+  ``y`` and the default password, ``raspberry``, when prompted.
 
   .. code-block:: bash
 
@@ -38,7 +38,11 @@ This documentation builds on
      ssh -o "UserKnownHostsFile /dev/null" pi@raspberrypi
 
 * Install a proper editor (e.g. ``sudo apt install vim``).
-* Set a unique hostname in ``/etc/hostname`` and last line of ``/etc/hosts``.
+* Set a unique hostname in ``/etc/hostname`` and last line of ``/etc/hosts``,
+  such as ``pizero5``.
+* Reboot: ``sudo reboot now``.
+* After ~20 seconds, verify that you can login: ``ssh pi@NEW_HOSTNAME``. This
+  time, we allow the host key to be added.
 
 Create an inventory file named ``hosts`` by copying ``hosts.example`` and
 adding the hostname(s) of the RPi(s) you want to configure.
