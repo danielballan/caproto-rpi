@@ -1,0 +1,43 @@
+# This is mostly based on a blog post:
+# https://www.jeffgeerling.com/blogs/jeff-geerling/raspberry-pi-zero-conserve-energy
+
+- hosts:
+    - battery-powered
+- tasks:
+    - name: Disable HDMI.
+      lineinfile:
+        path: /etc/rc.local
+        state: present
+      become: yes
+
+    # This is specific to RPi Zero. See post for more possibilities.
+    # https://www.jeffgeerling.com/blogs/jeff-geerling/controlling-pwr-act-leds-raspberry-pi
+    - name: Disable onboard LEDs (1/2).
+      lineinfile:
+        path: /boot/config.txt 
+        line: dtparam=act_led_trigger=none
+        state: present
+      become: yes
+    - name: Disable onboard LEDs (2/2).
+      lineinfile:
+        path: /boot/config.txt 
+        line: dtparam=act_led_activelow=on
+        state: present
+      become: yes
+
+    # This will I assume reduce the number of background processing that the
+    # RPi has to run, but I haven't seen measurements on whether this makes a
+    # significant difference to power consumption.
+    - name: Remove GUI and printer-related packages.
+      apt:
+        name: "{{ item }}"
+        state: absent
+      with_items:
+      - cups*
+      - gnome*
+      - x11-common*
+      become: yes
+
+    - name: Reboot
+      reboot:
+      become: yes
