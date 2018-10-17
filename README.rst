@@ -6,7 +6,7 @@ This documentation builds on
 
 * Download Raspbian Stretch Lite image (no desktop). See
   `Rpi downloads page <https://www.raspberrypi.org/downloads/raspbian/>`_.  
-* Use Etcher to "flash" the SD card with this image.
+* Use [Etcher](https://etcher.io/) to "flash" the SD card with this image.
 * Mount the boot partition of the SD card.
 * To enable ssh, create an empty file named ``ssh`` in the root of the boot
   partition.
