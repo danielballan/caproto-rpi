@@ -73,4 +73,4 @@ shave off 10s of mA of power usage.
 
    ansible-playbook low_power_usage.yml
 
-After apply one or both of these playbooks, reboot.
+After applying one or both of these playbooks, reboot.
