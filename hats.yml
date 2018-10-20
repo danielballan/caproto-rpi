@@ -1,0 +1,46 @@
+- hosts: battery-powered
+  tasks:
+    - name: Make /opt/iocs
+      file:
+        path: /opt/iocs
+        state: directory
+        mode: 755
+      become: yes
+
+    - name: Copy IOC scripts.
+      copy:
+        src: iocs/{{ item }}
+        dest: /opt/iocs/{{ item }}
+      with_items:
+        - hat.py
+      become: yes
+      notify:
+        - restart hat
+
+    - name: Template supervisor configuration for IOCs.
+      template:
+        src: supervisor_config/{{ item }}.conf
+        dest: /etc/supervisor/conf.d/{{ item }}.conf
+      with_items:
+        - hat.py
+      become: yes
+      notify:
+        - reread supervisord
+        - update supervisord
+
+  handlers:
+    - name: restart supervisord
+      service: name=supervisor state=restarted
+      become: yes
+
+    - name: reread supervisord
+      command: supervisorctl reread
+      become: yes
+
+    - name: update supervisord
+      command: supervisorctl update
+      become: yes
+
+    - name: restart hat
+      command: supervisorctl restart hat
+      become: yes
