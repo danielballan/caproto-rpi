@@ -84,9 +84,11 @@ and automate our work.
   * Get the chip's hardware RNG contributing to system entropy, which is
     necessary for generating enough entropy to importing certain Python packages.
   * Install git and supervisor.
-  * Install Python 3.6 from source and install pip using get-pip.py. Building
-    Python takes about 60 minutes on a RaspberryPi Zero.
-  * Install a new venv with caproto.
+  * Install Python 3.7 from source. Building Python takes about 60 minutes on a
+    RaspberryPi Zero.
+  * Configure pip to look for RPi-compatible wheels on
+    [piwheels.org](https://www.piwheels.org/). This saves a lot of time for
+    packages like scipy that are expensive to compile.
 
   .. code-block:: bash
   
