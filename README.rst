@@ -101,3 +101,9 @@ and automate our work.
      ansible-playbook low_power_usage.yml
 
 * After applying one or both of these playbooks, reboot.
+
+* Finally, run a playbook to install caproto in a virtualenv. No reboot required.
+
+  .. code-block:: bash
+
+     ansible-playbook caproto.yml

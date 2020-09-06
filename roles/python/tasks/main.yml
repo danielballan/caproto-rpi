@@ -52,6 +52,7 @@
     chdir: "/tmp/Python-{{version}}"
     target: altinstall
 - name: Configure pip to look for wheels from piwheels.org.
+  become: yes
   ini_file:
     path: /etc/pip.conf
     section: global
