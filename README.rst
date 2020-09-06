@@ -102,10 +102,10 @@ and automate our work.
 
 * After applying one or both of these playbooks, reboot the rpi
 
-  ```
-  ssh pi@NEW_HOSTNAME
-  sudo reboot now
-  ```
+  .. code-block:: bash
+  
+     ssh pi@NEW_HOSTNAME
+     sudo reboot now
 
   and give it 20 seconds or so to reboot.
 
