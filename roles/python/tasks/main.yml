@@ -12,17 +12,18 @@
   apt: name={{item}} update_cache=true cache_valid_time=600
   with_items:
   - build-essential
-  - tk-dev
+  - libbz2-dev
+  - libdb5.3-dev
+  - libexpat1-dev
+  - libffi-dev
+  - libgdbm-dev
+  - liblzma-dev
   - libncurses5-dev
   - libncursesw5-dev
   - libreadline6-dev
-  - libdb5.3-dev
-  - libgdbm-dev
   - libsqlite3-dev
   - libssl-dev
-  - libbz2-dev
-  - libexpat1-dev
-  - liblzma-dev
+  - tk-dev
   - zlib1g-dev
 - name: "Download python{{version}}"
   get_url:
