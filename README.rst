@@ -100,7 +100,14 @@ and automate our work.
   
      ansible-playbook low_power_usage.yml
 
-* After applying one or both of these playbooks, reboot.
+* After applying one or both of these playbooks, reboot the rpi
+
+  ```
+  ssh pi@NEW_HOSTNAME
+  sudo reboot now
+  ```
+
+  and give it 20 seconds or so to reboot.
 
 * Finally, run a playbook to install caproto in a virtualenv. No reboot required.
 
