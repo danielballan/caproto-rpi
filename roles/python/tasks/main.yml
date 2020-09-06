@@ -50,3 +50,11 @@
   make:
     chdir: "/tmp/Python-{{version}}"
     target: altinstall
+- name: Configure pip to look for wheels from piwheels.org.
+  ini_file:
+    path: /etc/pip.conf
+    section: global
+    option: extra-index-url
+    value: https://www.piwheels.org/simple
+    mode: '0600'
+    backup: yes

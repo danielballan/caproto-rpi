@@ -1,0 +1,14 @@
+- hosts: pis
+  tasks:
+    - name: Copy requirements.txt to remote system.
+      copy:
+        src: requirements.txt
+        dest: /tmp/requirements.txt
+
+    - name: Create a venv with Python software requirements.
+      pip:
+        requirements: /tmp/requirements.txt
+        virtualenv: /opt/caproto-venv
+        extra_args: "--upgrade"
+        virtualenv_command: /usr/local/bin/python3.6 -m venv
+      become: true
